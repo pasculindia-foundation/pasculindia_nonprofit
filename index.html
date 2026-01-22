@@ -3,10 +3,9 @@
 
 <head>
   <link rel="canonical" href="https://www.pascul.org/">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   
   <title>PASCUL Foundation | Science, Engineering & Technology for Social Development</title>
   <meta content="PASCUL Foundation provides research-based innovative solutions for societal development through science, engineering, and technology interventions in rural India." name="description">
@@ -27,19 +26,18 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-<!-- Open Graph -->
-<meta property="og:title" content="PASCUL Foundation | Science & Technology for Social Development">
-<meta property="og:description" content="Research-driven science, engineering and technology solutions for rural and sub-urban development in India.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.pascul.org/">
-<meta property="og:image" content="https://www.pascul.org/assets/img/logo4_2.png">
+  <!-- Open Graph -->
+  <meta property="og:title" content="PASCUL Foundation | Science & Technology for Social Development">
+  <meta property="og:description" content="Research-driven science, engineering and technology solutions for rural and sub-urban development in India.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.pascul.org/">
+  <meta property="og:image" content="https://www.pascul.org/assets/img/logo4_2.png">
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="PASCUL Foundation | Science for Social Impact">
-<meta name="twitter:description" content="Innovative science and technology solutions for education, rural development and sustainability.">
-<meta name="twitter:image" content="https://www.pascul.org/assets/img/logo4_2.png">
-
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PASCUL Foundation | Science for Social Impact">
+  <meta name="twitter:description" content="Innovative science and technology solutions for education, rural development and sustainability.">
+  <meta name="twitter:image" content="https://www.pascul.org/assets/img/logo4_2.png">
 
   <!-- Modern CSS -->
   <style>
@@ -61,6 +59,12 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      overflow-x: hidden;
+      width: 100%;
     }
 
     body {
@@ -69,6 +73,10 @@
       line-height: 1.6;
       overflow-x: hidden;
       background-color: var(--white);
+      width: 100%;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -84,11 +92,11 @@
 
     .section-title {
       position: relative;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     .section-title h2 {
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
       font-weight: 700;
       position: relative;
       display: inline-block;
@@ -119,12 +127,18 @@
     .btn-primary-custom {
       background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
       color: white;
-      padding: 12px 32px;
+      padding: 14px 32px;
       border-radius: 30px;
       border: none;
       font-weight: 600;
       transition: var(--transition);
       box-shadow: 0 5px 15px rgba(15, 59, 112, 0.2);
+      display: inline-block;
+      text-decoration: none;
+      font-size: 1rem;
+      min-height: 48px;
+      line-height: 20px;
+      touch-action: manipulation;
     }
 
     .btn-primary-custom:hover {
@@ -136,11 +150,17 @@
     .btn-outline-custom {
       background: transparent;
       color: var(--primary-blue);
-      padding: 12px 32px;
+      padding: 14px 32px;
       border-radius: 30px;
       border: 2px solid var(--primary-blue);
       font-weight: 600;
       transition: var(--transition);
+      display: inline-block;
+      text-decoration: none;
+      font-size: 1rem;
+      min-height: 48px;
+      line-height: 20px;
+      touch-action: manipulation;
     }
 
     .btn-outline-custom:hover {
@@ -151,15 +171,21 @@
 
     /* ======= Header ======= */
     #header {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-      padding: 15px 0;
+      padding: 12px 0;
       transition: var(--transition);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      width: 100%;
     }
 
     #header.scrolled {
-      padding: 10px 0;
+      padding: 8px 0;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     }
 
@@ -167,19 +193,26 @@
       display: flex;
       align-items: center;
       text-decoration: none;
+      max-width: 180px;
     }
 
     .logo img {
-      max-height: 50px;
-      margin-right: 10px;
+      max-height: 40px;
+      margin-right: 8px;
+      width: auto;
     }
 
     .logo span {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      font-size: 1.8rem;
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
       color: var(--primary-blue);
       letter-spacing: -0.5px;
+      white-space: nowrap;
+    }
+
+    .navbar {
+      position: relative;
     }
 
     .navbar ul {
@@ -192,17 +225,18 @@
 
     .navbar li {
       position: relative;
-      margin: 0 8px;
+      margin: 0 5px;
     }
 
     .navbar a {
       color: var(--dark-text);
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       text-decoration: none;
-      padding: 8px 15px;
+      padding: 8px 12px;
       border-radius: 5px;
       transition: var(--transition);
+      display: block;
     }
 
     .navbar a:hover, .navbar .active {
@@ -211,33 +245,89 @@
     }
 
     .navbar .getstarted {
-      margin-left: 15px;
+      margin-left: 10px;
     }
 
     .mobile-nav-toggle {
       display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--primary-blue);
+      cursor: pointer;
+      padding: 8px;
+      z-index: 10000;
+    }
+
+    /* ======= Mobile Navigation ======= */
+    @media (max-width: 991px) {
+      .mobile-nav-toggle {
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .navbar ul {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        z-index: 9998;
+        overflow-y: auto;
+      }
+
+      .navbar ul.show {
+        display: flex;
+      }
+
+      .navbar li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .navbar a {
+        padding: 15px 20px;
+        font-size: 1.1rem;
+        width: 100%;
+      }
+
+      .navbar .getstarted {
+        margin: 20px 0 0 0;
+      }
+
+      .mobile-nav-toggle.active .bi-list {
+        display: none;
+      }
+
+      .mobile-nav-toggle .bi-x {
+        display: none;
+      }
+
+      .mobile-nav-toggle.active .bi-x {
+        display: block;
+      }
     }
 
     /* ======= Hero Section ======= */
     #hero {
       position: relative;
-      padding: 180px 0 100px;
+      padding: clamp(120px, 15vw, 180px) 0 clamp(60px, 10vw, 100px);
       background: linear-gradient(135deg, rgba(248, 249, 250, 0.7) 0%, rgba(255, 255, 255, 0.95) 100%);
       overflow: hidden;
+      width: 100%;
+      margin-top: 64px;
     }
-
-    /* Change this section to remove the faint background */
-#hero:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 40%;
-  height: 100%;
-  /* Remove the background: url(...) line from here */
-  opacity: 0.0; 
-  z-index: 1;
-}
 
     #hero:after {
       content: '';
@@ -250,17 +340,24 @@
       z-index: 2;
     }
 
+    @media (max-width: 991px) {
+      #hero:after {
+        width: 100%;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.2));
+      }
+    }
+
     .hero-content {
       position: relative;
       z-index: 3;
-      max-width: 700px;
+      max-width: 100%;
     }
 
     .hero-content h1 {
-      font-size: 3.5rem;
+      font-size: clamp(2rem, 6vw, 3.5rem);
       font-weight: 800;
       line-height: 1.1;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       color: var(--primary-blue);
     }
 
@@ -280,8 +377,16 @@
       z-index: -1;
     }
 
+    .hero-content h2 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 600;
+      color: var(--dark-text);
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
     .hero-content h3 {
-      font-size: 1.4rem;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
       font-weight: 400;
       color: var(--light-text);
       margin-bottom: 2rem;
@@ -290,7 +395,7 @@
 
     .full-org-name {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.8rem;
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
       font-weight: 800;
       margin-bottom: 1.5rem;
       background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal), var(--accent-orange), var(--accent-purple));
@@ -300,6 +405,7 @@
       color: transparent;
       animation: gradientShift 5s ease infinite;
       letter-spacing: -0.5px;
+      line-height: 1.3;
     }
 
     @keyframes gradientShift {
@@ -312,42 +418,58 @@
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 576px) {
+      .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .hero-buttons a {
+        width: 100%;
+        text-align: center;
+      }
     }
 
     .hero-stats {
       display: flex;
-      gap: 30px;
-      margin-top: 3rem;
+      gap: clamp(20px, 4vw, 30px);
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .stat-item {
       text-align: center;
+      min-width: 100px;
     }
 
     .stat-item h3 {
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
       font-weight: 700;
       color: var(--primary-blue);
       margin-bottom: 5px;
     }
 
     .stat-item p {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--light-text);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
 
     /* ======= About Section ======= */
     #about {
-      padding: 100px 0;
+      padding: clamp(60px, 10vw, 100px) 0;
       background-color: var(--light-bg);
     }
 
     .about-content {
       background: white;
       border-radius: 15px;
-      padding: 40px;
+      padding: clamp(25px, 5vw, 40px);
       box-shadow: var(--shadow);
       height: 100%;
     }
@@ -355,11 +477,12 @@
     .icon-box {
       background: white;
       border-radius: 15px;
-      padding: 30px;
+      padding: clamp(20px, 3vw, 30px);
       height: 100%;
       box-shadow: var(--shadow);
       transition: var(--transition);
       border-top: 4px solid transparent;
+      margin-bottom: 20px;
     }
 
     .icon-box:hover {
@@ -368,30 +491,31 @@
     }
 
     .icon-box i {
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 4vw, 2.5rem);
       color: var(--primary-blue);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       display: block;
     }
 
     .icon-box h4 {
-      font-size: 1.3rem;
-      margin-bottom: 15px;
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      margin-bottom: 12px;
     }
 
     /* ======= Profile Section ======= */
     #profile {
-      padding: 100px 0;
+      padding: clamp(60px, 10vw, 100px) 0;
     }
 
     .profile-card {
       background: white;
       border-radius: 15px;
-      padding: 40px;
+      padding: clamp(25px, 4vw, 40px);
       box-shadow: var(--shadow);
       height: 100%;
       transition: var(--transition);
       position: relative;
+      margin-bottom: 30px;
     }
 
     .profile-card:hover {
@@ -401,7 +525,7 @@
     .profile-img {
       border-radius: 10px;
       overflow: hidden;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .profile-img img {
@@ -426,24 +550,35 @@
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       box-shadow: 0 5px 15px rgba(15, 59, 112, 0.3);
+    }
+
+    .profile-card ul {
+      padding-left: 20px;
+      margin-top: 15px;
+    }
+
+    .profile-card ul li {
+      margin-bottom: 8px;
+      color: var(--light-text);
     }
 
     /* ======= Services Section ======= */
     #services {
-      padding: 100px 0;
+      padding: clamp(60px, 10vw, 100px) 0;
       background-color: var(--light-bg);
     }
 
     .service-card {
       background: white;
       border-radius: 15px;
-      padding: 40px 30px;
+      padding: clamp(25px, 4vw, 40px) clamp(20px, 3vw, 30px);
       text-align: center;
       height: 100%;
       box-shadow: var(--shadow);
       transition: var(--transition);
+      margin-bottom: 20px;
     }
 
     .service-card:hover {
@@ -451,18 +586,18 @@
     }
 
     .service-icon {
-      width: 80px;
-      height: 80px;
+      width: clamp(60px, 10vw, 80px);
+      height: clamp(60px, 10vw, 80px);
       background: linear-gradient(135deg, rgba(15, 59, 112, 0.1), rgba(26, 140, 140, 0.1));
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 25px;
+      margin: 0 auto 20px;
     }
 
     .service-icon i {
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 3vw, 2rem);
       color: var(--primary-blue);
     }
 
@@ -470,7 +605,7 @@
     .combined-contact-card {
       background: white;
       border-radius: 15px;
-      padding: 40px;
+      padding: clamp(25px, 4vw, 40px);
       box-shadow: var(--shadow);
       height: 100%;
       transition: var(--transition);
@@ -483,8 +618,8 @@
     .contact-item {
       display: flex;
       align-items: flex-start;
-      margin-bottom: 25px;
-      padding-bottom: 25px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
       border-bottom: 1px solid #f0f0f0;
     }
 
@@ -492,6 +627,13 @@
       border-bottom: none;
       margin-bottom: 0;
       padding-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     .contact-icon {
@@ -504,6 +646,12 @@
       justify-content: center;
       margin-right: 20px;
       flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .contact-icon {
+        margin-bottom: 15px;
+      }
     }
 
     .contact-icon i {
@@ -523,7 +671,7 @@
 
     /* ======= Team Section ======= */
     #team {
-      padding: 100px 0;
+      padding: clamp(60px, 10vw, 100px) 0;
     }
 
     .team-member {
@@ -533,34 +681,19 @@
       box-shadow: var(--shadow);
       transition: var(--transition);
       height: 100%;
+      margin-bottom: 20px;
     }
 
     .team-member:hover {
       transform: translateY(-10px);
     }
 
-    .member-img {
-      height: 280px;
-      overflow: hidden;
-    }
-
-    .member-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-
-    .team-member:hover .member-img img {
-      transform: scale(1.05);
-    }
-
     .member-info {
-      padding: 25px;
+      padding: clamp(20px, 3vw, 25px);
     }
 
     .member-info h4 {
-      font-size: 1.3rem;
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
       margin-bottom: 5px;
     }
 
@@ -569,6 +702,7 @@
       font-weight: 500;
       display: block;
       margin-bottom: 15px;
+      font-size: 0.9rem;
     }
 
     .social-links {
@@ -587,6 +721,8 @@
       justify-content: center;
       color: var(--primary-blue);
       transition: var(--transition);
+      text-decoration: none;
+      font-size: 1rem;
     }
 
     .social-links a:hover {
@@ -597,22 +733,26 @@
 
     /* ======= Contact Section ======= */
     #contact {
-      padding: 100px 0;
+      padding: clamp(60px, 10vw, 100px) 0;
       background-color: var(--light-bg);
     }
 
     .contact-form {
       background: white;
       border-radius: 15px;
-      padding: 40px;
+      padding: clamp(25px, 4vw, 40px);
       box-shadow: var(--shadow);
     }
 
     .form-control {
-      padding: 12px 15px;
+      padding: 14px 15px;
       border-radius: 8px;
       border: 1px solid #e0e0e0;
       transition: var(--transition);
+      font-size: 1rem;
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
     }
 
     .form-control:focus {
@@ -620,17 +760,22 @@
       box-shadow: 0 0 0 3px rgba(15, 59, 112, 0.1);
     }
 
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
     /* ======= Footer ======= */
     #footer {
       background: var(--primary-blue);
       color: white;
-      padding: 70px 0 30px;
+      padding: clamp(40px, 8vw, 70px) 0 30px;
     }
 
     #footer h4 {
       color: white;
       font-size: 1.2rem;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       position: relative;
       padding-bottom: 10px;
     }
@@ -649,6 +794,7 @@
       color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
       transition: var(--transition);
+      display: inline-block;
     }
 
     #footer a:hover {
@@ -673,6 +819,7 @@
       border-radius: 30px;
       width: 100%;
       margin-bottom: 15px;
+      font-size: 1rem;
     }
 
     .newsletter-form input::placeholder {
@@ -686,7 +833,9 @@
       padding: 12px 30px;
       border-radius: 30px;
       font-weight: 600;
-      transition: var(--transition;
+      transition: var(--transition);
+      width: 100%;
+      font-size: 1rem;
     }
 
     .newsletter-form button:hover {
@@ -702,114 +851,148 @@
       font-size: 0.9rem;
     }
 
-    /* ======= Responsive Design ======= */
-    @media (max-width: 1199px) {
-      .hero-content h1 {
-        font-size: 3rem;
-      }
-      
-      .full-org-name {
-        font-size: 1.6rem;
+    /* ======= Back to Top Button ======= */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary-blue);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: var(--transition);
+      z-index: 999;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-to-top:hover {
+      background: var(--accent-teal);
+      transform: translateY(-5px);
+    }
+
+    /* ======= Utility Classes ======= */
+    .container {
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    @media (max-width: 1200px) {
+      .container {
+        max-width: 1140px;
+        padding: 0 20px;
       }
     }
 
-    @media (max-width: 991px) {
-      .navbar ul {
-        display: none;
-      }
-
-      .mobile-nav-toggle {
-        display: block;
-        font-size: 1.5rem;
-        color: var(--primary-blue);
-        cursor: pointer;
-      }
-
-      #hero:before {
-        width: 100%;
-        opacity: 0.3;
-      }
-
-      #hero:after {
-        width: 100%;
-        background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-      }
-
-      .hero-content {
-        text-align: center;
-      }
-
-      .hero-stats {
-        justify-content: center;
-      }
-
-      .section-title h2 {
-        font-size: 2.2rem;
+    @media (max-width: 992px) {
+      .container {
+        max-width: 960px;
+        padding: 0 20px;
       }
     }
 
     @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-      
-      .full-org-name {
-        font-size: 1.4rem;
-      }
-
-      .hero-content h3 {
-        font-size: 1.2rem;
-      }
-
-      .section-title h2 {
-        font-size: 2rem;
-      }
-
-      .hero-stats {
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-
-      .stat-item h3 {
-        font-size: 2rem;
-      }
-      
-      .contact-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      
-      .contact-icon {
-        margin-bottom: 15px;
+      .container {
+        max-width: 720px;
+        padding: 0 15px;
       }
     }
 
     @media (max-width: 576px) {
+      .container {
+        max-width: 100%;
+        padding: 0 15px;
+      }
+    }
+
+    /* ======= Touch-friendly improvements ======= */
+    a, button, input, textarea, select {
+      touch-action: manipulation;
+    }
+
+    input, textarea, select, button {
+      font-size: 16px !important; /* Prevents iOS zoom on focus */
+    }
+
+    /* ======= Image Responsiveness ======= */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ======= Prevent horizontal scrolling ======= */
+    .row {
+      margin-right: -15px;
+      margin-left: -15px;
+    }
+
+    .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6,
+    .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12,
+    .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,
+    .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12,
+    .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6,
+    .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+
+    /* ======= Additional Mobile Optimizations ======= */
+    @media (max-width: 576px) {
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+      
+      .full-org-name {
+        font-size: 1.3rem;
+      }
+      
       .hero-content h1 {
         font-size: 2rem;
       }
       
-      .full-org-name {
-        font-size: 1.2rem;
+      .hero-content h2 {
+        font-size: 1.3rem;
       }
-
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
+      
+      .stat-item {
+        min-width: 80px;
       }
-
-      .hero-buttons a {
-        width: 100%;
-        max-width: 250px;
-        text-align: center;
-      }
-
-      .section-title h2 {
+      
+      .stat-item h3 {
         font-size: 1.8rem;
+      }
+      
+      .btn-primary-custom, .btn-outline-custom {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* ======= Safe Area for Notched Phones ======= */
+    @supports (padding: max(0px)) {
+      body, header, .container {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
+      }
+      
+      #hero {
+        padding-top: max(120px, env(safe-area-inset-top));
+      }
+      
+      .back-to-top {
+        bottom: max(20px, env(safe-area-inset-bottom));
       }
     }
   </style>
-
 </head>
 
 <body>
@@ -819,9 +1002,9 @@
     <div class="container d-flex align-items-center justify-content-between">
       
       <a href="index.html" class="logo">
-  <img src="assets/img/logo4_2.png" alt="PASCUL Foundation Logo">
-  <span>PASCUL</span>
-</a>
+        <img src="assets/img/logo4_2.png" alt="PASCUL Foundation Logo">
+        <span>PASCUL</span>
+      </a>
 
       <nav id="navbar" class="navbar">
         <ul>
@@ -833,7 +1016,10 @@
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li><a class="getstarted scrollto btn-primary-custom" href="#contact">Get Started</a></li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <button class="mobile-nav-toggle">
+          <i class="bi bi-list"></i>
+          <i class="bi bi-x"></i>
+        </button>
       </nav>
 
     </div>
@@ -843,11 +1029,11 @@
   <section id="hero">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-7">
+        <div class="col-lg-12">
           <div class="hero-content" data-aos="fade-up">
             <div class="full-org-name">Paradigm of Science Cultivation and Ingenious Foundation</div>
             <h1>Transforming Society Through <span>Science & Innovation</span></h1>
-<h2>Science, Engineering & Technology for Social Development in India</h2>
+            <h2>Science, Engineering & Technology for Social Development in India</h2>
 
             <h3>The Paradigm of Science Cultivation and Ingenious Foundation drives sustainable development in rural and sub-urban India by bridging advanced research with practical, scalable solutions.</h3>
             
@@ -871,12 +1057,6 @@
               </div>
             </div>
           </div>
-        </div>
-        
-        <div class="col-lg-5 d-none d-lg-block" data-aos="zoom-in">
-   <img src="assets/img/image4701.png" class="img-fluid" alt="PASCUL Innovation" style="filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));">
-</div>
-          <!-- Hero image is set as background in CSS with increased transparency -->
         </div>
       </div>
     </div>
@@ -963,7 +1143,7 @@
               </div>
               <h3>Education & Development</h3>
               <p>PASCUL delivers professional teaching-learning solutions with efficient strategic planning for secondary and higher education institutions. We shape careers, prepare for professional challenges, and support organizations in drafting outcome-based programs that ensure prosperous futures.</p>
-              <ul class="mt-3" style="padding-left: 20px;">
+              <ul class="mt-3">
                 <li>Science & Technology curriculum development</li>
                 <li>Leadership & management training</li>
                 <li>Vocational skill development programs</li>
@@ -983,7 +1163,7 @@
               </div>
               <h3>Research & Development</h3>
               <p>We provide cutting-edge research and technology advisory to academia, industries, and NGOs, directly contributing to product development and the "Make in India" initiative. Our global collaborations bring advanced technologies to India for implementation across critical sectors.</p>
-              <ul class="mt-3" style="padding-left: 20px;">
+              <ul class="mt-3">
                 <li>Waste recycling and management solutions</li>
                 <li>Solar and storage integrated products</li>
                 <li>Green energy: Hydrogen production, solar auditing</li>
@@ -1003,7 +1183,7 @@
               </div>
               <h3>Rural Development & Gender Equality</h3>
               <p>We design and execute special programs for rural and sub-urban populations focusing on health, livelihood, environment, sanitation, and education sectors to enhance living standards and promote gender equality through targeted outreach and capacity building.</p>
-              <ul class="mt-3" style="padding-left: 20px;">
+              <ul class="mt-3">
                 <li>Awareness programs on education and technology</li>
                 <li>Skill development and vocational training</li>
                 <li>Empowering youth for socio-economic sustainability</li>
@@ -1171,7 +1351,7 @@
       </div>
     </section><!-- End Team Section -->
 
-<section id="contact" class="contact">
+    <section id="contact" class="contact">
       <div class="container">
         
         <div class="section-title center-title" data-aos="fade-up">
@@ -1266,8 +1446,8 @@
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                background: #e9ecef; /* Light gray background circle */
-                color: #0f3b70 !important; /* Force icons to be dark blue */
+                background: #e9ecef;
+                color: #0f3b70 !important;
                 margin-right: 10px;
                 border-radius: 50%;
                 width: 40px;
@@ -1339,32 +1519,70 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // 1. Initialize Animations
-      AOS.init({ duration: 800, once: true });
+      AOS.init({ 
+        duration: 800, 
+        once: true,
+        offset: 100,
+        disable: window.innerWidth < 768 ? true : false
+      });
 
-      // 2. Mobile Nav Toggle
+      // 2. Mobile Nav Toggle with improved touch handling
       const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      const navbar = document.querySelector('#navbar');
+      const navbarUl = document.querySelector('#navbar ul');
+      
       if (mobileNavToggle) {
-        mobileNavToggle.addEventListener('click', function() {
-          navbar.classList.toggle('navbar-mobile');
-          this.classList.toggle('bi-list');
-          this.classList.toggle('bi-x');
+        mobileNavToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          navbarUl.classList.toggle('show');
+          this.classList.toggle('active');
+          
+          // Prevent body scrolling when menu is open
+          if (navbarUl.classList.contains('show')) {
+            document.body.style.overflow = 'hidden';
+          } else {
+            document.body.style.overflow = '';
+          }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!navbarUl.contains(e.target) && !mobileNavToggle.contains(e.target)) {
+            navbarUl.classList.remove('show');
+            mobileNavToggle.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+        
+        // Close menu when clicking on links
+        document.querySelectorAll('.navbar a').forEach(link => {
+          link.addEventListener('click', function() {
+            navbarUl.classList.remove('show');
+            mobileNavToggle.classList.remove('active');
+            document.body.style.overflow = '';
+          });
         });
       }
 
-      // 3. Smooth Scrolling
+      // 3. Improved Smooth Scrolling with offset for fixed header
       document.querySelectorAll('.scrollto').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
+          const targetId = this.getAttribute('href');
+          if (targetId.startsWith('#')) {
             e.preventDefault();
-            // Close mobile menu if open
-            if (navbar.classList.contains('navbar-mobile')) {
-              navbar.classList.remove('navbar-mobile');
-              mobileNavToggle.classList.add('bi-list');
-              mobileNavToggle.classList.remove('bi-x');
+            const target = document.querySelector(targetId);
+            if (target) {
+              const headerHeight = document.querySelector('#header').offsetHeight;
+              const targetPosition = target.offsetTop - headerHeight - 20;
+              
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+              });
+              
+              // Update URL without jumping
+              history.pushState(null, null, targetId);
             }
-            window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
           }
         });
       });
@@ -1376,6 +1594,58 @@
           header.classList.add('scrolled');
         } else {
           header.classList.remove('scrolled');
+        }
+      });
+
+      // 5. Back to Top Button
+      const backToTopButton = document.querySelector('.back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopButton.style.display = 'flex';
+        } else {
+          backToTopButton.style.display = 'none';
+        }
+      });
+
+      // 6. Touch-friendly form inputs
+      const formInputs = document.querySelectorAll('input, textarea, select');
+      formInputs.forEach(input => {
+        input.addEventListener('touchstart', function(e) {
+          this.style.outline = 'none';
+        });
+      });
+
+      // 7. Prevent zoom on iOS for form elements
+      document.addEventListener('touchstart', function() {}, {passive: true});
+
+      // 8. Fix for iOS 100vh issue
+      function setVH() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }
+      setVH();
+      window.addEventListener('resize', setVH);
+      window.addEventListener('orientationchange', setVH);
+
+      // 9. Prevent rubber-band scrolling on iOS
+      document.body.addEventListener('touchmove', function(e) {
+        if (navbarUl.classList.contains('show')) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+    });
+
+    // 10. Window load event for better mobile performance
+    window.addEventListener('load', function() {
+      // Ensure all images are loaded
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        if (img.complete) {
+          img.classList.add('loaded');
+        } else {
+          img.addEventListener('load', function() {
+            this.classList.add('loaded');
+          });
         }
       });
     });
