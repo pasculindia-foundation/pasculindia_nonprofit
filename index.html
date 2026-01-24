@@ -92,7 +92,7 @@
 
     .section-title {
       position: relative;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     .section-title h2 {
@@ -103,16 +103,16 @@
       padding-bottom: 15px;
     }
 
-    .section-title h2::after {
-  content: "";
-  display: block;
-  margin: 12px auto 0;
-  width: 70px;
-  height: 4px;
-  background-color: var(--accent-teal);
-  border-radius: 2px;
-}
-
+    .section-title h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-blue), var(--accent-teal));
+      border-radius: 2px;
+    }
 
     .section-title.center-title h2:after {
       left: 50%;
@@ -169,21 +169,20 @@
       transform: translateY(-3px);
     }
 
-    /* ======= Header ======= */
-    #header {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-      padding: 8px 0;
-      transition: var(--transition);
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-      width: 100%;
-    }
-    
+    /* ======= Header (Optimized) ======= */
+#header {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  padding: 8px 0; /* Reduced from 12px for mobile */
+  transition: var(--transition);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 100%;
+}
     #header.scrolled {
       padding: 8px 0;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -319,36 +318,39 @@
       }
     }
 
-    /* ======= Reduced Section Padding ======= */
-    #about,
-    #profile,
-    #services,
-    #team,
-    #contact {
-      padding: clamp(40px, 6vw, 70px) 0;
+   /* 1. Kill the Top Space */
+#hero {
+  padding-top: 10px !important;    /* Forces the content to the top */
+  padding-bottom: 20px !important;
+  margin-top: 45px !important;     /* Pulls it under the fixed header */
+  min-height: auto !important;     /* Stops the hero from being too tall */
+}
+/* Desktop adjustment to keep large screens looking good */
+@media (min-width: 992px) {
+  #hero {
+    padding: 160px 0 100px;
+    margin-top: 64px;
+  }
+}
+
+    /* REMOVED THE PROBLEMATIC :after ELEMENT THAT WAS BLOCKING THE IMAGE */
+    /* #hero:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(to left, rgba(255,255,255,0.9), rgba(255,255,255,0.2));
+      z-index: 2;
     }
 
-    #clients {
-      padding: 40px 0;
-      background-color: var(--light-bg);
-    }
-
-    #hero {
-      padding-top: 120px !important;
-      padding-bottom: 60px !important;
-      margin-top: 70px !important;
-      min-height: auto !important;
-      position: relative;
-      overflow: hidden;
-      background: var(--white) !important;
-    }
-
-    @media (min-width: 992px) {
-      #hero {
-        padding: 120px 0 80px;
-        margin-top: 64px;
+    @media (max-width: 991px) {
+      #hero:after {
+        width: 100%;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.2));
       }
-    }
+    } */
 
     .hero-content {
       position: relative;
@@ -356,26 +358,34 @@
       max-width: 100%;
     }
 
-    .hero-content h1 {
-      font-size: 0.9rem !important;
-      letter-spacing: 0.5px !important;
-      word-wrap: break-word !important;
-      overflow-wrap: break-word !important;
-      display: block !important;
-      width: 100% !important;
-      line-height: 1.2 !important;
-      font-weight: 800;
-      text-align: center;
-      color: #0f3b70;
-    }
+   /* 2. Fix the "Transforming..." Font */
+.hero-content h1 {
+  /* 1. Shrink font just a tiny bit more for mobile */
+  font-size: 0.9rem !important; 
+  
+  /* 2. Tighten letters so the word takes up less width */
+  letter-spacing: 0.5px !important;
+  
+  /* 3. Force the word to stay inside the screen */
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  display: block !important;
+  width: 100% !important;
+  
+  /* 4. Keep the look professional */
+  line-height: 1.2 !important;
+  font-weight: 800;
+  text-align: center;
+  color: #0f3b70;
+}
 
-    @media (min-width: 992px) {
-      .hero-content h1 {
-        font-size: 3rem !important;
-        letter-spacing: normal !important;
-      }
-    }
-    
+/* 5. Return to normal size for Desktop */
+@media (min-width: 992px) {
+  .hero-content h1 {
+    font-size: 3rem !important;
+    letter-spacing: normal !important;
+  }
+}
     .hero-content h1 span {
       color: var(--accent-teal);
       position: relative;
@@ -476,80 +486,59 @@
     }
 
     /* Hero Image Styling */
-    .hero-image-container {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      background: transparent !important;
-    }
+  .hero-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  /* Adds a soft background circle to "anchor" the floating image */
+  background: radial-gradient(circle, rgba(15, 59, 112, 0.05) 0%, transparent 70%);
+}
 
-    .hero-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(15, 59, 112, 0.15);
-      border: 1px solid rgba(15, 59, 112, 0.1);
-    }
-
-    /* Clean removal of gradient backgrounds */
-    #hero::before,
-    #hero::after {
-      display: none !important;
-      background: none !important;
-    }
-
-    /* About section fixes */
-    #about {
-      background-color: var(--light-bg) !important;
-      position: relative;
-      z-index: 1;
-    }
-
-    #about .row,
-    #about .col-lg-5 {
-      position: relative;
-      z-index: 2;
-      background: inherit;
-    }
-
-    /* Remove any gradient backgrounds */
-    #about * {
-      background-image: none !important;
-    }
-
-    #about .about-content * {
-      background: none !important;
-      -webkit-text-fill-color: inherit !important;
-      color: inherit !important;
-    }
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px; /* Softer corners */
+  box-shadow: 0 15px 35px rgba(15, 59, 112, 0.15); /* Blue-tinted shadow for connection */
+  border: 1px solid rgba(15, 59, 112, 0.1);
+}
     
-    /* Hero Image Contextual Framing - FIXED */
-    .hero-image-wrapper {
-      position: relative;
-      display: inline-block;
-      z-index: 1;
-    }
+/* ===== Hero Image Contextual Framing ===== */
+.hero-image-wrapper {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
 
-    .hero-image-wrapper::before {
-      content: none !important; /* Removed gradient background */
-    }
+.hero-image-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 59, 112, 0.08),
+    rgba(26, 140, 140, 0.08)
+  );
+  border-radius: 20px;
+  z-index: -1;
+}
 
-    .hero-image-caption {
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--light-text);
-      margin-top: 12px;
-      letter-spacing: 0.3px;
-    }
+.hero-image-caption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--light-text);
+  margin-top: 12px;
+  letter-spacing: 0.3px;
+}
 
-    @media (min-width: 992px) {
-      .hero-image-container {
-        justify-content: flex-start;
-        padding-left: 30px;
-      }
-    }
+@media (min-width: 992px) {
+  .hero-image-container {
+    justify-content: flex-start;
+    padding-left: 30px;
+  }
+}
+
 
     @keyframes floatAnimation {
       0%, 100% { transform: translateY(0); }
@@ -558,7 +547,7 @@
 
     @media (max-width: 991px) {
       .hero-image-container {
-        order: -1;
+        order: -1; /* Move image above text on mobile */
         margin-bottom: 30px;
       }
       
@@ -578,6 +567,7 @@
 
     /* ======= About Section ======= */
     #about {
+      padding: clamp(60px, 10vw, 100px) 0;
       background-color: var(--light-bg);
     }
 
@@ -587,7 +577,6 @@
       padding: clamp(25px, 5vw, 40px);
       box-shadow: var(--shadow);
       height: 100%;
-      border: none !important;
     }
 
     .icon-box {
@@ -601,13 +590,6 @@
       margin-bottom: 20px;
     }
 
-    /* Remove any left/right borders */
-    .about-content,
-    .icon-box {
-      border-left: none !important;
-      border-right: none !important;
-    }
-    
     .icon-box:hover {
       transform: translateY(-10px);
       border-top-color: var(--accent-teal);
@@ -626,6 +608,10 @@
     }
 
     /* ======= Profile Section ======= */
+    #profile {
+      padding: clamp(60px, 10vw, 100px) 0;
+    }
+
     .profile-card {
       background: white;
       border-radius: 15px;
@@ -685,6 +671,7 @@
 
     /* ======= Services Section ======= */
     #services {
+      padding: clamp(60px, 10vw, 100px) 0;
       background-color: var(--light-bg);
     }
 
@@ -788,8 +775,8 @@
     }
 
     /* ======= Team Section ======= */
-    #team .row {
-      justify-content: center;
+    #team {
+      padding: clamp(60px, 10vw, 100px) 0;
     }
 
     .team-member {
@@ -798,14 +785,8 @@
       overflow: hidden;
       box-shadow: var(--shadow);
       transition: var(--transition);
-      height: auto !important;
+      height: 100%;
       margin-bottom: 20px;
-      padding: 25px !important;
-      min-height: auto !important;
-      width: 100%;
-      max-width: 300px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .team-member:hover {
@@ -813,7 +794,7 @@
     }
 
     .member-info {
-      padding: 0;
+      padding: clamp(20px, 3vw, 25px);
     }
 
     .member-info h4 {
@@ -827,21 +808,6 @@
       display: block;
       margin-bottom: 15px;
       font-size: 0.9rem;
-      min-height: 2.5em;
-    }
-
-    @media (min-width: 768px) {
-      #team .col-md-6 {
-        flex: 0 0 50%;
-        max-width: 50%;
-      }
-    }
-
-    @media (min-width: 992px) {
-      #team .col-lg-3 {
-        flex: 0 0 25%;
-        max-width: 25%;
-      }
     }
 
     .social-links {
@@ -853,12 +819,12 @@
     .social-links a {
       width: 36px;
       height: 36px;
-      background: rgba(15, 59, 112, 0.1);
+      background: var(--light-bg);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--primary-blue) !important;
+      color: var(--primary-blue);
       transition: var(--transition);
       text-decoration: none;
       font-size: 1rem;
@@ -866,12 +832,13 @@
 
     .social-links a:hover {
       background: var(--primary-blue);
-      color: white !important;
+      color: white;
       transform: translateY(-3px);
     }
 
     /* ======= Contact Section ======= */
     #contact {
+      padding: clamp(60px, 10vw, 100px) 0;
       background-color: var(--light-bg);
     }
 
@@ -903,77 +870,78 @@
       resize: vertical;
     }
 
-    /* ======= Footer CSS ======= */
-    #footer {
-      background: var(--primary-blue);
-      color: white;
-      padding: clamp(40px, 8vw, 70px) 0 30px;
-    }
+   /* ======= Updated Footer CSS ======= */
+#footer {
+  background: var(--primary-blue);
+  color: white;
+  padding: clamp(40px, 8vw, 70px) 0 30px;
+}
 
-    #footer h3 {
-      color: var(--accent-gold) !important;
-      font-weight: 700;
-    }
+#footer h4 {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
 
-    #footer h4 {
-      color: white !important;
-    }
+#footer h4:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--accent-teal);
+}
 
-    #footer h4:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 40px;
-      height: 3px;
-      background: var(--accent-teal);
-    }
+/* General Links */
+#footer a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: var(--transition);
+  display: inline-block;
+}
 
-    #footer a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      transition: var(--transition);
-      display: inline-block;
-    }
+#footer a:hover {
+  color: white;
+  padding-left: 5px; /* Keeps the slight shift for text links */
+}
 
-    #footer a:hover {
-      color: white;
-      padding-left: 5px;
-    }
+/* FIX: Social Media Circles Alignment */
+.social-links {
+  margin-top: 20px;
+  display: flex; /* Ensures icons sit in a row */
+  gap: 10px;    /* Even spacing between circles */
+}
 
-    .social-links {
-      margin-top: 20px;
-      display: flex;
-      gap: 10px;
-    }
+.social-links a {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 50%;
+  display: flex !important; /* Overrides inline-block to allow centering */
+  align-items: center;      /* Vertical center icon */
+  justify-content: center;   /* Horizontal center icon */
+  transition: 0.3s;
+  padding-left: 0 !important; /* REMOVES the 5px shift that causes misalignment */
+}
 
-    .social-links a {
-      width: 36px;
-      height: 36px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border-radius: 50%;
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
-      transition: 0.3s;
-      padding-left: 0 !important;
-    }
+.social-links a:hover {
+  background: var(--accent-teal);
+  color: #fff;
+  transform: translateY(-3px); /* Lifts up instead of shifting right */
+}
 
-    .social-links a:hover {
-      background: var(--accent-teal);
-      color: #fff;
-      transform: translateY(-3px);
-    }
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
 
-    .footer-links ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-links li {
-      margin-bottom: 10px;
-    }
+.footer-links li {
+  margin-bottom: 10px;
+}
 
     .newsletter-form input {
       background: rgba(255, 255, 255, 0.1);
@@ -1083,7 +1051,7 @@
     }
 
     input, textarea, select, button {
-      font-size: 16px !important;
+      font-size: 16px !important; /* Prevents iOS zoom on focus */
     }
 
     /* ======= Image Responsiveness ======= */
@@ -1156,158 +1124,195 @@
         bottom: max(20px, env(safe-area-inset-bottom));
       }
     }
-    
-    /* ===== Hero Layout ===== */
-    .hero-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      margin-top: 3rem;
-      margin-bottom: 1rem;
-      word-break: keep-all;
-      overflow-wrap: break-word;
-      text-align: center;
-    }
+ /* ===== Hero Layout ===== */
+.hero-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-top: 3rem;       /* push title down from navbar */
+  margin-bottom: 1rem;    /* reduce space after title */
+  word-break: keep-all; 
+  overflow-wrap: break-word;
+  text-align: center;     /* optional, center the hero text */
+}
 
-    .hero-subtitle {
-      font-size: 1.25rem;
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 1.85rem;
-      }
-    }
+/* Subheading below the title */
+.hero-subtitle {
+  font-size: 1.25rem;     /* adjust if needed */
+  margin-top: 0.5rem;     /* less space above */
+  margin-bottom: 1rem;    /* less space below */
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.85rem; 
+  }
+}
 
-    .hero-subtitle {
-      font-size: 1.6rem;
-      color: #333;
-      text-align: center;
-      font-weight: 500;
-      margin-bottom: 1.4em;
-      letter-spacing: 0.8px;
+  /* Special Gradient for Highlighted <span> */
+  .hero-title span {
+    background: linear-gradient(90deg, #ffeb3b, #ff5722);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Sub‑heading with a soft but supportive color */
+  .hero-subtitle {
+    font-size: 1.6rem;
+    color: #333;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 1.4em;
+    letter-spacing: 0.8px;
+  }
+
+  /* Image container */
+  .hero-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Image framing */
+  .hero-image-wrapper {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+  }
+
+  .hero-image-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    background: linear-gradient(
+      135deg,
+      rgba(15, 59, 112, 0.08),
+      rgba(26, 140, 140, 0.08)
+    );
+    border-radius: 20px;
+    z-index: -1;
+  }
+
+  .hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 14px;
+  }
+
+  /* Caption */
+  .hero-image-caption {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: var(--light-text);
+    text-align: center;
+    max-width: 90%;
+  }
+
+  /* Text block */
+  .hero-content p {
+    margin-bottom: 1rem;
+  }
+
+  .hero-focus {
+    padding-left: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-focus li {
+    margin-bottom: 0.4rem;
+  }
+
+  /* Desktop tightening */
+  @media (min-width: 992px) {
+    .hero-main {
+      margin-top: 2rem;
     }
 
     .hero-image-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .hero-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 14px;
+      align-items: flex-start;
     }
 
     .hero-image-caption {
-      margin-top: 12px;
-      font-size: 0.85rem;
-      color: var(--light-text);
-      text-align: center;
-      max-width: 90%;
+      text-align: left;
     }
-
-    .hero-content p {
-      margin-bottom: 1rem;
-    }
-
-    .hero-focus {
-      padding-left: 1.1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-focus li {
-      margin-bottom: 0.4rem;
-    }
-
-    @media (min-width: 992px) {
-      .hero-main {
-        margin-top: 2rem;
-      }
-
-      .hero-image-container {
-        align-items: flex-start;
-      }
-
-      .hero-image-caption {
-        text-align: left;
-      }
-    }
-    
-    /* === Map Links Styling === */
-    .map-link {
-      color: var(--accent-teal) !important;
-      text-decoration: none !important;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 5px;
-      font-size: 0.9rem;
-    }
-    
-    .map-link:hover {
-      text-decoration: underline !important;
-      color: var(--primary-blue) !important;
-    }
-    
-    /* === Address with Map Links === */
-    .address-with-map {
-      line-height: 1.6;
-    }
-    
-    .address-with-map strong {
-      display: block;
-      margin-top: 10px;
-      color: var(--dark-text);
-    }
-    
-    .address-with-map strong:first-child {
-      margin-top: 0;
-    }
-    
+  }
     /* === FIX FOR TEAM & FOOTER === */
+/* Fix Team Card Height */
+.team-member {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 25px 20px !important;
+}
+
+/* Fix Social Media Icon Colors */
+#team .social-links a,
+.footer-contact .social-links a {
+    color: var(--primary-blue) !important;
+    background: rgba(15, 59, 112, 0.1) !important;
+}
+
+#team .social-links a:hover {
+    background: var(--primary-blue) !important;
+    color: white !important;
+}
+
+/* Fix Footer Styling */
+#footer {
+    background: var(--primary-blue) !important;
+    color: white !important;
+}
+
+#footer h3, #footer h4 {
+    color: white !important;
+}
+
+#footer a {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+#footer a:hover {
+    color: white !important;
+    padding-left: 5px;
+}
+
+.footer-contact .social-links a {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+.footer-contact .social-links a:hover {
+    background: var(--accent-teal) !important;
+    color: white !important;
+}
+
+/* Fix Contact Section */
+.contact-form {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.combined-contact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    height: 100%;
+}
+
+/* Mobile Responsive Fix */
+@media (max-width: 768px) {
     .team-member {
-        min-height: auto !important;
-        height: auto !important;
-        padding: 25px 20px !important;
+        margin-bottom: 20px;
+        max-width: 100%;
     }
-
-    #team .social-links a,
-    .footer-contact .social-links a {
-        color: var(--primary-blue) !important;
-        background: rgba(15, 59, 112, 0.1) !important;
+    
+    .contact-form,
+    .combined-contact-card {
+        padding: 20px;
     }
-
-    /* Mobile Responsive Fix */
-    @media (max-width: 768px) {
-        .team-member {
-            margin-bottom: 20px;
-            max-width: 100%;
-        }
-        
-        .contact-form,
-        .combined-contact-card {
-            padding: 20px;
-        }
-    }
-    /* ==== HARD STOP FOR LEFT GREEN LINE ==== */
-html, body {
-  max-width: 100%;
-  overflow-x: hidden !important;
 }
-
-.section-title {
-  overflow: hidden;
-}
-
-[data-aos] {
-  transform: none !important;
-}
-
-  </style>
+</style>
 </head>
 
 <body>
@@ -1341,70 +1346,77 @@ html, body {
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero">
-    <div class="container">
-      <!-- Headline -->
-      <div class="row">
-        <div class="col-12">
-          <h1 class="hero-title">
-            Transforming Society Through <span>Science & Innovation</span>
-          </h1>
-          <h2 class="hero-subtitle">
-            Science, Engineering & Technology for Social Development in India
-          </h2>
-        </div>
-      </div>
+<section id="hero">
+  <div class="container">
 
-      <!-- Image + Text -->
-      <div class="row align-items-center hero-main">
-        <!-- IMAGE LEFT -->
-        <div class="col-lg-5 order-1 order-lg-1">
-          <div class="hero-image-container">
-            <div class="hero-image-wrapper" style="position: relative;">
-              <img src="assets/img/image4701.png" class="hero-image" alt="Pipeline diagram">
-              <div style="text-align: center; margin-top: 10px;">
-                <strong>Research &rarr; Innovation &rarr; Social Impact</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TEXT RIGHT -->
-        <div class="col-lg-7 order-2 order-lg-2">
-          <div class="hero-content">
-            <p>
-              PASCUL Foundation advances science-driven solutions by translating
-              fundamental research into deployable technologies and programs with
-              measurable social and industrial impact.
-            </p>
-
-            <p>
-              We operate across the full pipeline — from discovery and validation
-              to capacity building and deployment — enabling progress in quantum
-              technologies, semiconductors, and advanced scientific education.
-            </p>
-
-            <ul class="hero-focus">
-              <li>Research translation & technology validation</li>
-              <li>Advanced training and capacity building</li>
-              <li>Industry, academic, and policy partnerships</li>
-            </ul>
-
-            <div class="hero-buttons">
-              <a href="#about" class="btn-primary-custom scrollto">Our Mission</a>
-              <a href="#contact" class="btn-outline-custom scrollto">Partner With Us</a>
-            </div>
-          </div>
-        </div>
+    <!-- Headline -->
+    <div class="row">
+      <div class="col-12">
+       <h1 class="hero-title">
+  Transforming Society Through <span>Science & Innovation</span>
+</h1>
+<h2 class="hero-subtitle">
+  Science, Engineering & Technology for Social Development in India
+</h2>
       </div>
     </div>
-  </section>
-  <!-- End Hero -->
+
+    <!-- Image + Text -->
+    <div class="row align-items-center hero-main">
+
+      <!-- IMAGE LEFT -->
+      <div class="col-lg-5 order-1 order-lg-1">
+        <div class="hero-image-container">
+          <div class="hero-image-wrapper" style="position: relative;">
+    <img src="assets/img/image4701.png" class="hero-image" alt="Pipeline diagram">
+    <div style="text-align: center; margin-top: 10px;">
+        <strong>Research &rarr; Innovation &rarr; Social Impact</strong>
+    </div>
+          </div>
+
+          
+        </div>
+      </div>
+
+      <!-- TEXT RIGHT -->
+      <div class="col-lg-7 order-2 order-lg-2">
+        <div class="hero-content">
+          <p>
+            PASCUL Foundation advances science-driven solutions by translating
+            fundamental research into deployable technologies and programs with
+            measurable social and industrial impact.
+          </p>
+
+          <p>
+            We operate across the full pipeline — from discovery and validation
+            to capacity building and deployment — enabling progress in quantum
+            technologies, semiconductors, and advanced scientific education.
+          </p>
+
+          <ul class="hero-focus">
+            <li>Research translation & technology validation</li>
+            <li>Advanced training and capacity building</li>
+            <li>Industry, academic, and policy partnerships</li>
+          </ul>
+
+          <div class="hero-buttons">
+            <a href="#about" class="btn-primary-custom scrollto">Our Mission</a>
+            <a href="#contact" class="btn-outline-custom scrollto">Partner With Us</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- End Hero -->
 
   <main id="main">
+
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container">
+        
         <div class="section-title center-title" data-aos="fade-up">
           <h2>Our Core Mission</h2>
           <p class="text-center mx-auto" style="max-width: 700px;">PASCUL Foundation is dedicated to advancing societal development through innovative science and technology solutions tailored for India's rural and sub-urban communities.</p>
@@ -1456,12 +1468,14 @@ html, body {
             </div>
           </div>
         </div>
+
       </div>
     </section><!-- End About Section -->
 
     <!-- ======= Profile Section ======= -->
     <section id="profile" class="profile">
       <div class="container">
+        
         <div class="section-title center-title" data-aos="fade-up">
           <h2>Strategic Focus Areas</h2>
           <p class="text-center mx-auto" style="max-width: 800px;">Our integrated approach combines research, development, and implementation across multiple domains to create sustainable impact.</p>
@@ -1528,12 +1542,14 @@ html, body {
             </div>
           </div>
         </div>
+
       </div>
     </section><!-- End Profile Section -->
 
     <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
+    <section id="clients" class="clients" style="padding: 60px 0; background-color: var(--light-bg);">
       <div class="container">
+        
         <div class="section-title center-title" data-aos="fade-up">
           <h2>Trusted Partners</h2>
           <p class="text-center mx-auto" style="max-width: 700px;">We collaborate with leading organizations worldwide to amplify our impact and reach.</p>
@@ -1556,12 +1572,14 @@ html, body {
             <img src="assets/img/clients/cuj.png" class="img-fluid" alt="CUJ">
           </div>
         </div>
+
       </div>
     </section><!-- End Clients Section -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container">
+        
         <div class="section-title center-title" data-aos="fade-up">
           <h2>Our Services</h2>
           <p class="text-center mx-auto" style="max-width: 700px;">We offer comprehensive solutions through our extensive global network of public, private, bilateral, and multilateral organizations.</p>
@@ -1608,20 +1626,22 @@ html, body {
             </div>
           </div>
         </div>
+
       </div>
     </section><!-- End Services Section -->
 
-    <!-- ======= Team Section ======= -->
+        <!-- ======= Team Section (Fixed) ======= -->
     <section id="team" class="team">
       <div class="container">
+        
         <div class="section-title center-title" data-aos="fade-up">
           <h2>Our Leadership</h2>
           <p class="text-center mx-auto" style="max-width: 700px;">Our team comprises qualified professionals with multi-domain experience dedicated to creating meaningful impact.</p>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row">
           <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="team-member">
+            <div class="team-member text-center p-4">
               <div class="member-info">
                 <h4>Dr. Neelesh Sharma</h4>
                 <span>Director General</span>
@@ -1635,7 +1655,7 @@ html, body {
           </div>
           
           <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="team-member">
+            <div class="team-member text-center p-4">
               <div class="member-info">
                 <h4>Mr. Ankur Sharma</h4>
                 <span>Director, Technical Solutions</span>
@@ -1649,10 +1669,10 @@ html, body {
           </div>
           
           <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="team-member">
+            <div class="team-member text-center p-4">
               <div class="member-info">
                 <h4>Dr. Poonam Sharma</h4>
-                <span>Director, Research Projects </span>
+                <span>Director, Research & Project Management</span>
                 <div class="social-links mt-3">
                   <a href="#" title="Twitter"><i class="bi bi-twitter-x"></i></a>
                   <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
@@ -1663,7 +1683,7 @@ html, body {
           </div>
           
           <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
-            <div class="team-member">
+            <div class="team-member text-center p-4">
               <div class="member-info">
                 <h4>Dr. Rohit Dhir</h4>
                 <span>Director, Academic Solutions</span>
@@ -1676,12 +1696,14 @@ html, body {
             </div>
           </div>
         </div>
+
       </div>
     </section><!-- End Team Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container">
+        
         <div class="section-title center-title" data-aos="fade-up">
           <h2>Contact Us</h2>
           <p class="text-center mx-auto" style="max-width: 700px;">For services, technical queries, or partnership opportunities, please reach out to our team.</p>
@@ -1695,14 +1717,9 @@ html, body {
                   <i class="bi bi-geo-alt"></i>
                 </div>
                 <div class="contact-details">
-                  <h4>Our Addresses</h4>
-                  <div class="address-with-map">
-                    PASCUL - Paradigm of Science Cultivation and Ingenious Foundation<br>
-                    Tihri, Kangra - 176032, Himachal Pradesh, INDIA<br>
-                    <a href="https://maps.app.goo.gl/QLn9p4RNp3XeYJQb8" target="_blank" class="map-link">
-                      <i class="bi bi-geo-alt-fill"></i> View on Google Maps
-                    </a>
-                  </div>
+                  <h4>Our Address</h4>
+                  <p>Paradigm of Science Cultivation and Ingenious Foundation<br>
+                  Kangra - 176032, Himachal Pradesh, INDIA</p>
                 </div>
               </div>
               
@@ -1755,6 +1772,7 @@ html, body {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   </main>
@@ -1764,17 +1782,13 @@ html, body {
     <div class="footer-top">
       <div class="container">
         <div class="row">
+          
           <div class="col-lg-4 col-md-6 footer-contact">
-            <h3>PASCUL Foundation<sup>&reg;</sup></span></h3>
-            <div class="address-with-map">
-              Tihri, Kangra - 176032, Himachal Pradesh, INDIA<br>
-              <a href="https://maps.app.goo.gl/QLn9p4RNp3XeYJQb8" target="_blank" class="map-link" style="color: rgba(255, 255, 255, 0.8) !important;">
-                <i class="bi bi-geo-alt-fill"></i> View on Map
-              </a>
-            </div>
-            <p class="mt-3">
+            <h3>PASCUL Foundation</h3>
+            <p>
+              Kangra - 176032, Himachal Pradesh, INDIA<br><br>
               <strong>Phone:</strong> +91 9805133887<br>
-              <strong>Email:</strong> pascul.india@gmail.com
+              <strong>Email:</strong> director@pascul.org
             </p>
             <div class="social-links mt-3">
               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
@@ -1814,13 +1828,14 @@ html, body {
               <button type="submit" class="btn-primary-custom">Subscribe</button>
             </form>
           </div>
+
         </div>
       </div>
     </div>
 
     <div class="container py-4">
       <div class="copyright">
-        &copy; Copyright 2026 <strong><span>PASCUL Foundation<sup>&reg;</sup></span></strong>. All Rights Reserved.
+        &copy; Copyright 2026 <strong><span>PASCUL Foundation</span></strong>. All Rights Reserved.
       </div>
     </div>
   </footer>
