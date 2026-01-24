@@ -92,7 +92,7 @@
 
     .section-title {
       position: relative;
-      margin-bottom: 1.5rem; /* Reduced from 2rem */
+      margin-bottom: 1.5rem;
     }
 
     .section-title h2 {
@@ -169,7 +169,7 @@
       transform: translateY(-3px);
     }
 
-    /* ======= Header (Optimized) ======= */
+    /* ======= Header ======= */
     #header {
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
@@ -325,24 +325,27 @@
     #services,
     #team,
     #contact {
-      padding: clamp(40px, 6vw, 70px) 0; /* Reduced from clamp(60px, 10vw, 100px) */
+      padding: clamp(40px, 6vw, 70px) 0;
     }
 
     #clients {
-      padding: 40px 0; /* Reduced from 60px 0 */
+      padding: 40px 0;
       background-color: var(--light-bg);
     }
 
     #hero {
-      padding-top: 10px !important;
-      padding-bottom: 20px !important;
-      margin-top: 45px !important;
+      padding-top: 120px !important;
+      padding-bottom: 60px !important;
+      margin-top: 70px !important;
       min-height: auto !important;
+      position: relative;
+      overflow: hidden;
+      background: var(--white) !important;
     }
 
     @media (min-width: 992px) {
       #hero {
-        padding: 120px 0 80px; /* Reduced from 160px 0 100px */
+        padding: 120px 0 80px;
         margin-top: 64px;
       }
     }
@@ -372,7 +375,6 @@
         letter-spacing: normal !important;
       }
     }
-       
     
     .hero-content h1 span {
       color: var(--accent-teal);
@@ -480,7 +482,7 @@
       justify-content: center;
       align-items: center;
       padding: 20px;
-      background: radial-gradient(circle, rgba(15, 59, 112, 0.05) 0%, transparent 70%);
+      background: transparent !important;
     }
 
     .hero-image {
@@ -491,33 +493,39 @@
       border: 1px solid rgba(15, 59, 112, 0.1);
     }
 
-    /* Remove the gradient overlay from hero that might be causing issues */
-#hero::before,
-#hero::after {
-    display: none !important;
-}
+    /* Clean removal of gradient backgrounds */
+    #hero::before,
+    #hero::after {
+      display: none !important;
+      background: none !important;
+    }
 
-/* Specifically target the about section */
-#about .row,
-#about .col-lg-5 {
-    position: relative;
-    z-index: 2;
-    background: inherit;
-}
+    /* About section fixes */
+    #about {
+      background-color: var(--light-bg) !important;
+      position: relative;
+      z-index: 1;
+    }
 
-/* Remove any gradient backgrounds that might be creating green lines */
-#about * {
-    background-image: none !important;
-}
+    #about .row,
+    #about .col-lg-5 {
+      position: relative;
+      z-index: 2;
+      background: inherit;
+    }
 
-/* If it's actually a text issue with gradient */
-#about .about-content * {
-    background: none !important;
-    -webkit-text-fill-color: inherit !important;
-    color: inherit !important;
-}
+    /* Remove any gradient backgrounds */
+    #about * {
+      background-image: none !important;
+    }
+
+    #about .about-content * {
+      background: none !important;
+      -webkit-text-fill-color: inherit !important;
+      color: inherit !important;
+    }
     
-    /* ===== Hero Image Contextual Framing ===== */
+    /* Hero Image Contextual Framing - FIXED */
     .hero-image-wrapper {
       position: relative;
       display: inline-block;
@@ -525,16 +533,7 @@
     }
 
     .hero-image-wrapper::before {
-      content: "";
-      position: absolute;
-      inset: -20px;
-      background: linear-gradient(
-        135deg,
-        rgba(15, 59, 112, 0.08),
-        rgba(26, 140, 140, 0.08)
-      );
-      border-radius: 20px;
-      z-index: -1;
+      content: none !important; /* Removed gradient background */
     }
 
     .hero-image-caption {
@@ -588,35 +587,26 @@
       padding: clamp(25px, 5vw, 40px);
       box-shadow: var(--shadow);
       height: 100%;
+      border: none !important;
     }
 
     .icon-box {
-     /* background: white;
+      background: white;
       border-radius: 15px;
       padding: clamp(20px, 3vw, 30px);
       height: 100%;
       box-shadow: var(--shadow);
-      transition: var(--transition);*/
+      transition: var(--transition);
       border-top: 4px solid transparent;
       margin-bottom: 20px;
     }
 
-/* Or to completely remove any left-side border */
-.about-content,
-.icon-box {
-  border-left: none !important;
-  border-right: none !important;
-}
-
-/* Also check the about-content section */
-.about-content {
-  background: white;
-  border-radius: 15px;
-  padding: clamp(25px, 5vw, 40px);
-  box-shadow: var(--shadow);
-  height: 100%;
-  border: none !important; /* Add this to remove all borders */
-}
+    /* Remove any left/right borders */
+    .about-content,
+    .icon-box {
+      border-left: none !important;
+      border-right: none !important;
+    }
     
     .icon-box:hover {
       transform: translateY(-10px);
@@ -634,7 +624,6 @@
       font-size: clamp(1.1rem, 2vw, 1.3rem);
       margin-bottom: 12px;
     }
-
 
     /* ======= Profile Section ======= */
     .profile-card {
@@ -798,7 +787,7 @@
       line-height: 1.5;
     }
 
-    /* ======= Team Section (FIXED - Wider Cards) ======= */
+    /* ======= Team Section ======= */
     #team .row {
       justify-content: center;
     }
@@ -814,7 +803,7 @@
       padding: 25px !important;
       min-height: auto !important;
       width: 100%;
-      max-width: 300px; /* Uniform width */
+      max-width: 300px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -841,7 +830,6 @@
       min-height: 2.5em;
     }
 
-    /* Adjust team grid for better spacing */
     @media (min-width: 768px) {
       #team .col-md-6 {
         flex: 0 0 50%;
@@ -923,13 +911,13 @@
     }
 
     #footer h3 {
-    color: var(--accent-gold) !important; /* or use var(--accent-teal) */
-    font-weight: 700;
-}
+      color: var(--accent-gold) !important;
+      font-weight: 700;
+    }
 
-#footer h4 {
-    color: white !important;
-}
+    #footer h4 {
+      color: white !important;
+    }
 
     #footer h4:after {
       content: '';
@@ -1193,12 +1181,6 @@
       }
     }
 
-    /* Special Gradient for Highlighted <span> */
-.hero-title span {
-    color: var(--accent-teal);
-    position: relative;
-}
-
     .hero-subtitle {
       font-size: 1.6rem;
       color: #333;
@@ -1212,25 +1194,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    .hero-image-wrapper {
-      position: relative;
-      display: inline-block;
-      z-index: 1;
-    }
-
-    .hero-image-wrapper::before {
-      content: "";
-      position: absolute;
-      inset: -18px;
-      background: linear-gradient(
-        135deg,
-        rgba(15, 59, 112, 0.08),
-        rgba(26, 140, 140, 0.08)
-      );
-      border-radius: 20px;
-      z-index: -1;
     }
 
     .hero-image {
@@ -1304,45 +1267,34 @@
     .address-with-map strong:first-child {
       margin-top: 0;
     }
+    
     /* === FIX FOR TEAM & FOOTER === */
-/* Fix Team Card Height */
-.team-member {
-    min-height: auto !important;
-    height: auto !important;
-    padding: 25px 20px !important;
-}
+    .team-member {
+        min-height: auto !important;
+        height: auto !important;
+        padding: 25px 20px !important;
+    }
 
-/* Fix Social Media Icon Colors */
-#team .social-links a,
-.footer-contact .social-links a {
-    color: var(--primary-blue) !important;
-    background: rgba(15, 59, 112, 0.1) !important;
-}
+    #team .social-links a,
+    .footer-contact .social-links a {
+        color: var(--primary-blue) !important;
+        background: rgba(15, 59, 112, 0.1) !important;
+    }
 
-/* === FIX LEFT GREEN LINE ISSUE === */
-html, body {
-  overflow-x: hidden !important;
-}
-
-#about {
-  overflow: hidden;
-}
-
-/* Neutralize bootstrap row bleed */
-#about .row {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-/* Remove any accidental pseudo elements */
-#about::before,
-#about::after {
-  content: none !important;
-  display: none !important;
-}
-
+    /* Mobile Responsive Fix */
+    @media (max-width: 768px) {
+        .team-member {
+            margin-bottom: 20px;
+            max-width: 100%;
+        }
+        
+        .contact-form,
+        .combined-contact-card {
+            padding: 20px;
+        }
+    }
   </style>
-</head><!-- This is the closing tag -->
+</head>
 
 <body>
 
@@ -1645,7 +1597,7 @@ html, body {
       </div>
     </section><!-- End Services Section -->
 
-    <!-- ======= Team Section (Fixed) ======= -->
+    <!-- ======= Team Section ======= -->
     <section id="team" class="team">
       <div class="container">
         <div class="section-title center-title" data-aos="fade-up">
@@ -1733,10 +1685,10 @@ html, body {
                   <div class="address-with-map">
                     PASCUL - Paradigm of Science Cultivation and Ingenious Foundation<br>
                     Tihri, Kangra - 176032, Himachal Pradesh, INDIA<br>
-                    <a href="https://maps.app.goo.gl/QLn9p4RNp3XeYJQb8" target="_blank" class="map-link target="_blank" class="map-link">
+                    <a href="https://maps.app.goo.gl/QLn9p4RNp3XeYJQb8" target="_blank" class="map-link">
                       <i class="bi bi-geo-alt-fill"></i> View on Google Maps
                     </a>
-                    </div>
+                  </div>
                 </div>
               </div>
               
@@ -1808,7 +1760,8 @@ html, body {
             </div>
             <p class="mt-3">
               <strong>Phone:</strong> +91 9805133887<br>
-              <strong>Email:</strong> pascul.india@gmail.com            </p>
+              <strong>Email:</strong> pascul.india@gmail.com
+            </p>
             <div class="social-links mt-3">
               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
               <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
