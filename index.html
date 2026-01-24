@@ -489,6 +489,32 @@
       box-shadow: 0 15px 35px rgba(15, 59, 112, 0.15);
       border: 1px solid rgba(15, 59, 112, 0.1);
     }
+
+    /* Remove the gradient overlay from hero that might be causing issues */
+#hero::before,
+#hero::after {
+    display: none !important;
+}
+
+/* Specifically target the about section */
+#about .row,
+#about .col-lg-5 {
+    position: relative;
+    z-index: 2;
+    background: inherit;
+}
+
+/* Remove any gradient backgrounds that might be creating green lines */
+#about * {
+    background-image: none !important;
+}
+
+/* If it's actually a text issue with gradient */
+#about .about-content * {
+    background: none !important;
+    -webkit-text-fill-color: inherit !important;
+    color: inherit !important;
+}
     
     /* ===== Hero Image Contextual Framing ===== */
     .hero-image-wrapper {
