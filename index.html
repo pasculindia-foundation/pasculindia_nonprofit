@@ -1097,14 +1097,24 @@
         bottom: max(20px, env(safe-area-inset-bottom));
       }
     }
-  .hero-title {
+ /* ===== Hero Layout ===== */
+.hero-title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  margin-bottom: 1.5rem;
-  word-break: keep-all;
+  margin-top: 3rem;       /* push title down from navbar */
+  margin-bottom: 1rem;    /* reduce space after title */
+  word-break: keep-all; 
   overflow-wrap: break-word;
+  text-align: center;     /* optional, center the hero text */
 }
 
+/* Subheading below the title */
+.hero-subtitle {
+  font-size: 1.25rem;     /* adjust if needed */
+  margin-top: 0.5rem;     /* less space above */
+  margin-bottom: 2rem;    /* less space below */
+  text-align: center;
+}
 @media (max-width: 480px) {
   .hero-title {
     font-size: 1.85rem; 
