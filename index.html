@@ -1097,15 +1097,19 @@
         bottom: max(20px, env(safe-area-inset-bottom));
       }
     }
-    .hero-title {
-    font-size: 3.0rem;
-    font-weight: 800;
-    background: linear-gradient(90deg, #0f47af, #00bcd4, #e91e63);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
-    margin: 1em 0;
+  .hero-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem; 
   }
+}
 
   /* Special Gradient for Highlighted <span> */
   .hero-title span {
