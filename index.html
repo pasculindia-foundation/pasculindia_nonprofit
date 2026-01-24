@@ -476,6 +476,41 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.1);
       animation: floatAnimation 6s ease-in-out infinite;
     }
+/* ===== Hero Image Contextual Framing ===== */
+.hero-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-image-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 59, 112, 0.08),
+    rgba(26, 140, 140, 0.08)
+  );
+  border-radius: 20px;
+  z-index: -1;
+}
+
+/* Caption under hero image */
+.hero-image-caption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--light-text);
+  margin-top: 12px;
+  letter-spacing: 0.3px;
+}
+
+/* Desktop-only alignment tightening */
+@media (min-width: 992px) {
+  .hero-image-container {
+    justify-content: flex-end;
+    padding-left: 30px;
+  }
+}
 
     @keyframes floatAnimation {
       0%, 100% { transform: translateY(0); }
@@ -1103,8 +1138,14 @@
         
         <div class="col-lg-5" data-aos="zoom-in">
           <div class="hero-image-container">
-            <img src="assets/img/image4701.png" class="hero-image" alt="PASCUL Innovation">
-          </div>
+  <div class="hero-image-wrapper">
+    <img src="assets/img/image4701.png" class="hero-image" alt="PASCUL Innovation">
+  </div>
+  <p class="hero-image-caption">
+    Research → Innovation → Scalable Social Impact
+  </p>
+</div>
+
         </div>
       </div>
     </div>
