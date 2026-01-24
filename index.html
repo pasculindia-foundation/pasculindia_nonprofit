@@ -1098,9 +1098,30 @@
       }
     }
     .hero-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    margin-bottom: 1.5rem;
+    font-size: 3.2rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #0f47af, #00bcd4, #e91e63);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin: 1em 0;
+  }
+
+  /* Special Gradient for Highlighted <span> */
+  .hero-title span {
+    background: linear-gradient(90deg, #ffeb3b, #ff5722);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Sub‑heading with a soft but supportive color */
+  .hero-subtitle {
+    font-size: 1.6rem;
+    color: #333;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 1.4em;
+    letter-spacing: 0.8px;
   }
 
   /* Image container */
