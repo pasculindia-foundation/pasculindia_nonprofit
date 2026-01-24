@@ -169,21 +169,20 @@
       transform: translateY(-3px);
     }
 
-    /* ======= Header ======= */
-    #header {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-      padding: 12px 0;
-      transition: var(--transition);
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-      width: 100%;
-    }
-
+    /* ======= Header (Optimized) ======= */
+#header {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  padding: 8px 0; /* Reduced from 12px for mobile */
+  transition: var(--transition);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 100%;
+}
     #header.scrolled {
       padding: 8px 0;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -319,15 +318,23 @@
       }
     }
 
-    /* ======= Hero Section ======= */
     #hero {
-      position: relative;
-      padding: clamp(120px, 15vw, 180px) 0 clamp(60px, 10vw, 100px);
-      background: linear-gradient(135deg, rgba(248, 249, 250, 0.7) 0%, rgba(255, 255, 255, 0.95) 100%);
-      overflow: hidden;
-      width: 100%;
-      margin-top: 64px;
-    }
+  position: relative;
+  /* Reduced padding for mobile to remove top gap */
+  padding: 80px 0 40px; 
+  background: linear-gradient(135deg, rgba(248, 249, 250, 0.7) 0%, rgba(255, 255, 255, 0.95) 100%);
+  overflow: hidden;
+  width: 100%;
+  margin-top: 50px; /* Reduced from 64px */
+}
+
+/* Desktop adjustment to keep large screens looking good */
+@media (min-width: 992px) {
+  #hero {
+    padding: 160px 0 100px;
+    margin-top: 64px;
+  }
+}
 
     /* REMOVED THE PROBLEMATIC :after ELEMENT THAT WAS BLOCKING THE IMAGE */
     /* #hero:after {
@@ -355,13 +362,13 @@
     }
 
     .hero-content h1 {
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 1.2rem;
-      color: var(--primary-blue);
-    }
-
+  /* Reduced start size to 1.8rem for better mobile fit */
+  font-size: clamp(1.8rem, 6vw, 3.2rem); 
+  font-weight: 800;
+  line-height: 1.2; /* Tighter line height connects the text better */
+  margin-bottom: 1.2rem;
+  color: var(--primary-blue);
+}
     .hero-content h1 span {
       color: var(--accent-teal);
       position: relative;
@@ -463,19 +470,23 @@
 
     /* Hero Image Styling */
     .hero-image-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px 0;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  /* Subtle blue glow connects image to the theme */
+  background: radial-gradient(circle, rgba(15, 59, 112, 0.05) 0%, transparent 70%);
+}
 
-    .hero-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      animation: floatAnimation 6s ease-in-out infinite;
-    }
+.hero-image {
+  max-width: 90%; /* Keeps it from touching screen edges */
+  height: auto;
+  border-radius: 15px;
+  /* Blue-tinted shadow makes it look like part of the site */
+  box-shadow: 0 15px 35px rgba(15, 59, 112, 0.15); 
+  animation: floatAnimation 6s ease-in-out infinite;
+  border: 1px solid rgba(15, 59, 112, 0.1);
+}
 /* ===== Hero Image Contextual Framing ===== */
 .hero-image-wrapper {
   position: relative;
