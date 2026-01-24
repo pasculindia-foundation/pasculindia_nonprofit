@@ -360,10 +360,21 @@
 
    /* 2. Fix the "Transforming..." Font */
 .hero-content h1 {
-  font-size: 1.6rem !important;    /* Fixed size for mobile reliability */
-  line-height: 1.1 !important;
-  margin-bottom: 8px !important;
+  /* This forces a small, readable size on phones */
+  font-size: 1.6rem !important; 
+  line-height: 1.2 !important;
   font-weight: 800;
+  margin-bottom: 10px !important;
+  text-align: center;
+  color: #0f3b70; /* Your primary blue */
+}
+
+/* This only makes it big again when on a Computer/Laptop */
+@media (min-width: 992px) {
+  .hero-content h1 {
+    font-size: 3.2rem !important;
+    line-height: 1.1 !important;
+  }
 }
     .hero-content h1 span {
       color: var(--accent-teal);
