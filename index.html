@@ -574,6 +574,23 @@
       margin-bottom: 20px;
     }
 
+/* Or to completely remove any left-side border */
+.about-content,
+.icon-box {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* Also check the about-content section */
+.about-content {
+  background: white;
+  border-radius: 15px;
+  padding: clamp(25px, 5vw, 40px);
+  box-shadow: var(--shadow);
+  height: 100%;
+  border: none !important; /* Add this to remove all borders */
+}
+    
     .icon-box:hover {
       transform: translateY(-10px);
       border-top-color: var(--accent-teal);
@@ -590,9 +607,8 @@
       font-size: clamp(1.1rem, 2vw, 1.3rem);
       margin-bottom: 12px;
     }
-#about * {
-    outline: 1px solid red;
-}
+
+
     /* ======= Profile Section ======= */
     .profile-card {
       background: white;
