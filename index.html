@@ -1235,6 +1235,83 @@
       text-align: left;
     }
   }
+    /* === FIX FOR TEAM & FOOTER === */
+/* Fix Team Card Height */
+.team-member {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 25px 20px !important;
+}
+
+/* Fix Social Media Icon Colors */
+#team .social-links a,
+.footer-contact .social-links a {
+    color: var(--primary-blue) !important;
+    background: rgba(15, 59, 112, 0.1) !important;
+}
+
+#team .social-links a:hover {
+    background: var(--primary-blue) !important;
+    color: white !important;
+}
+
+/* Fix Footer Styling */
+#footer {
+    background: var(--primary-blue) !important;
+    color: white !important;
+}
+
+#footer h3, #footer h4 {
+    color: white !important;
+}
+
+#footer a {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+#footer a:hover {
+    color: white !important;
+    padding-left: 5px;
+}
+
+.footer-contact .social-links a {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+.footer-contact .social-links a:hover {
+    background: var(--accent-teal) !important;
+    color: white !important;
+}
+
+/* Fix Contact Section */
+.contact-form {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.combined-contact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    height: 100%;
+}
+
+/* Mobile Responsive Fix */
+@media (max-width: 768px) {
+    .team-member {
+        margin-bottom: 20px;
+        max-width: 100%;
+    }
+    
+    .contact-form,
+    .combined-contact-card {
+        padding: 20px;
+    }
+}
 </style>
 </head>
 
