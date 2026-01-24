@@ -1236,11 +1236,23 @@
     }
   }
     /* === FIX FOR TEAM & FOOTER === */
-/* Fix Team Card Height */
+/* Fix Team Card Height 
 .team-member {
     min-height: auto !important;
     height: auto !important;
     padding: 25px 20px !important;
+}
+*/
+    .team-member {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Keeps social links at the bottom */
+    height: 100%;                  /* Fills the height of the container */
+    padding: 30px 20px !important; /* Consistent internal spacing */
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05); /* Optional: makes it look like a placard */
+    border-radius: 8px;            /* Optional: rounded placard look */
+    width: 100%;                   /* Ensures uniform width */
 }
 
 /* Fix Social Media Icon Colors */
