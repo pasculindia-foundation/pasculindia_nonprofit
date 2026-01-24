@@ -360,20 +360,30 @@
 
    /* 2. Fix the "Transforming..." Font */
 .hero-content h1 {
-  /* This forces a small, readable size on phones */
-  font-size: 1.6rem !important; 
+  /* 1. Shrink font just a tiny bit more for mobile */
+  font-size: 1.4rem !important; 
+  
+  /* 2. Tighten letters so the word takes up less width */
+  letter-spacing: -0.5px !important;
+  
+  /* 3. Force the word to stay inside the screen */
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  display: block !important;
+  width: 100% !important;
+  
+  /* 4. Keep the look professional */
   line-height: 1.2 !important;
   font-weight: 800;
-  margin-bottom: 10px !important;
   text-align: center;
-  color: #0f3b70; /* Your primary blue */
+  color: #0f3b70;
 }
 
-/* This only makes it big again when on a Computer/Laptop */
+/* 5. Return to normal size for Desktop */
 @media (min-width: 992px) {
   .hero-content h1 {
-    font-size: 3.2rem !important;
-    line-height: 1.1 !important;
+    font-size: 3rem !important;
+    letter-spacing: normal !important;
   }
 }
     .hero-content h1 span {
